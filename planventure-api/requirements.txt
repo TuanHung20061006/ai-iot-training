@@ -19,7 +19,7 @@ google-genai==2.14.0
 pydantic==2.13.4
 requests==2.34.2
 Flask-Caching==2.4.1
-redis==8.0.1
+redis==8.1.0
 
 # Testing
 pytest==9.1.1
