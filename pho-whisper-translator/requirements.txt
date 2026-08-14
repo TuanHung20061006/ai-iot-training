@@ -1,0 +1,7 @@
+deep-translator
+edge-tts
+Flask>=3.1,<4
+psutil
+pvrecorder
+torch
+transformers

@@ -1,35 +1,18 @@
-# Planventure API
+# AI & IoT Training
 
-Backend REST API cho ứng dụng lập kế hoạch du lịch Planventure.
+Kho lưu trữ các dự án độc lập phục vụ học tập và thử nghiệm AI/IoT.
 
-## Chức năng
+## Các dự án
 
-- Đăng ký và đăng nhập bằng email/mật khẩu
-- Access token và refresh token JWT
-- CRUD chuyến đi theo từng người dùng
-- Sinh lịch trình mặc định theo khoảng ngày
-- SQLite cho phát triển cục bộ, SQLAlchemy và Alembic migrations
-- CORS cho frontend React/Vite
-- Rate limiting và health check database
-- Bộ kiểm thử tự động và GitHub Actions CI
+| Dự án | Mô tả | Công nghệ chính |
+| --- | --- | --- |
+| [Planventure API](planventure-api/README.md) | Backend lập kế hoạch du lịch và gợi ý lịch trình | Flask, SQLAlchemy, Gemini |
+| [PhoWhisper Translator](pho-whisper-translator/README.md) | Nhận dạng giọng nói tiếng Việt, dịch sang tiếng Anh và phát giọng đọc | PhoWhisper, Transformers, Flask |
 
-## Bắt đầu nhanh
-
-```powershell
-cd planventure-api
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-copy .sample.env .env
-python -m flask --app app db upgrade
-python -m flask --app app run --debug
-```
-
-API mặc định chạy tại `http://127.0.0.1:5000`.
-
-Xem [tài liệu API](planventure-api/README.md) để biết cấu hình, endpoint, kiểm
-thử và cách chạy production.
+Mỗi dự án nằm trong một thư mục riêng và có tài liệu cài đặt, dependencies cùng
+lệnh chạy độc lập trong file `README.md` của dự án đó.
 
 ## License
 
-Dự án được cấp phép theo [MIT License](LICENSE).
+Các dự án trong repository được cấp phép theo [MIT License](LICENSE), trừ khi
+có ghi chú khác trong thư mục dự án.

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <title>PhoTranslate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Trang chủ PhoTranslate">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>PhoTranslate</span>
+    </a>
+    <span class="model-chip">PhoWhisper · VI → EN</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">TRỢ LÝ DỊCH GIỌNG NÓI</p>
+      <h1 id="page-title">Nói tiếng Việt.<br><span>Hiểu bằng tiếng Anh.</span></h1>
+      <p>Nhập văn bản hoặc ghi âm tối đa 10 giây để bắt đầu.</p>
+    </section>
+
+    <section class="translator-card" aria-label="Công cụ dịch">
+      <div class="language-bar">
+        <button class="language active" type="button">Tiếng Việt</button>
+        <span class="direction" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+        </span>
+        <button class="language" type="button">Tiếng Anh</button>
+      </div>
+
+      <div class="translation-grid">
+        <div class="translation-panel source-panel">
+          <label class="sr-only" for="source-text">Văn bản tiếng Việt</label>
+          <textarea id="source-text" maxlength="{{ max_text_length }}" placeholder="Nhập tiếng Việt..." autofocus></textarea>
+          <div class="panel-footer">
+            <button id="record-button" class="icon-button record-button" type="button" aria-label="Bắt đầu ghi âm" title="Ghi âm tối đa 10 giây">
+              <svg class="mic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1M12 19v3M8 22h8"/></svg>
+              <span id="record-label">Ghi âm</span>
+            </button>
+            <span id="character-count" class="character-count">0 / {{ max_text_length }}</span>
+          </div>
+        </div>
+
+        <div class="translation-panel result-panel">
+          <div id="result-placeholder" class="result-placeholder">Bản dịch sẽ xuất hiện ở đây</div>
+          <div id="translated-text" class="translated-text" tabindex="0" aria-live="polite"></div>
+          <div class="panel-footer result-actions">
+            <button id="listen-button" class="icon-button" type="button" aria-label="Nghe bản dịch" title="Nghe bản dịch" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+            </button>
+            <button id="copy-button" class="icon-button" type="button" aria-label="Sao chép bản dịch" title="Sao chép" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <div id="status" class="status" role="status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span>Sẵn sàng</span>
+        </div>
+        <button id="translate-button" class="primary-button" type="button">
+          <span>Dịch sang tiếng Anh</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <p class="privacy-note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Bản ghi âm chỉ được dùng để nhận dạng và sẽ được xóa sau khi xử lý.
+    </p>
+  </main>
+
+  <audio id="audio-player" hidden></audio>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
