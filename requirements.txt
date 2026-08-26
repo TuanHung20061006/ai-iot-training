@@ -1,0 +1,5 @@
+streamlit
+opencv-python-headless==4.9.0.80
+mediapipe==0.10.21
+tensorflow==2.15.1
+numpy==1.26.4
