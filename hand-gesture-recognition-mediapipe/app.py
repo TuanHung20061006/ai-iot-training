@@ -16,16 +16,19 @@ from model import KeyPointClassifier
 from model import PointHistoryClassifier
 
 
-KEYPOINT_LABEL_PATH = 'model/keypoint_classifier/keypoint_classifier_label.csv'
-POINT_HISTORY_LABEL_PATH = (
-    'model/point_history_classifier/point_history_classifier_label.csv'
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+KEYPOINT_LABEL_PATH = (
+    BASE_DIR /
+    "model/keypoint_classifier/keypoint_classifier_label.csv"
 )
-KEYPOINT_TARGET = 'keypoint'
-POINT_HISTORY_TARGET = 'point_history'
-TARGET_MODES = {
-    KEYPOINT_TARGET: 1,
-    POINT_HISTORY_TARGET: 2,
-}
+
+POINT_HISTORY_LABEL_PATH = (
+    BASE_DIR /
+    "model/point_history_classifier/point_history_classifier_label.csv"
+)
 HISTORY_POINTS = (
     'index',
     'thumb',
