@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gesture Writer</title>
+    <link rel="stylesheet" href="/web/styles.css">
+    <script src="/web/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>Gesture Writer</h1>
+          <p>Nhận diện ký hiệu bàn tay và ghi thành văn bản.</p>
+        </div>
+        <div class="server-state" id="connectionState">Chưa kết nối camera</div>
+      </header>
+
+      <main class="workspace">
+        <section class="camera-pane" aria-label="Camera nhận diện">
+          <div class="video-frame">
+            <video id="video" autoplay playsinline muted></video>
+            <div class="video-empty" id="videoEmpty">Camera</div>
+            <div class="commit-flash" id="commitFlash"></div>
+          </div>
+
+          <div class="control-row">
+            <button id="startButton" type="button">Bật camera</button>
+            <button id="stopButton" type="button" disabled>Tắt camera</button>
+            <button id="resetButton" type="button">Reset nhịp</button>
+          </div>
+
+          <div class="recognition-panel">
+            <div class="metric">
+              <span class="metric-label">Ứng viên</span>
+              <strong id="candidateLabel">-</strong>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Nguồn</span>
+              <strong id="candidateSource">-</strong>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Thời gian</span>
+              <strong id="holdTimer">0.0 / 2.0s</strong>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Khoá lặp</span>
+              <strong id="cooldownTimer">0.0s</strong>
+            </div>
+          </div>
+
+          <div class="progress-track" aria-label="Tiến trình xác nhận">
+            <div class="progress-fill" id="holdProgress"></div>
+          </div>
+        </section>
+
+        <section class="writer-pane" aria-label="Văn bản đầu ra">
+          <textarea id="outputText" readonly spellcheck="false"
+            placeholder="Văn bản nhận diện sẽ xuất hiện ở đây"></textarea>
+
+          <div class="writer-actions">
+            <button id="copyButton" type="button">Copy</button>
+            <button id="backspaceButton" type="button">Backspace</button>
+            <button id="clearButton" type="button">Clear</button>
+          </div>
+
+          <div class="label-board">
+            <div>
+              <span>Keypoint</span>
+              <strong id="keypointLabel">-</strong>
+            </div>
+            <div>
+              <span>Motion</span>
+              <strong id="motionLabel">-</strong>
+            </div>
+            <div>
+              <span>Lần ghi cuối</span>
+              <strong id="lastCommit">-</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <canvas id="captureCanvas" hidden></canvas>
+  </body>
+</html>
